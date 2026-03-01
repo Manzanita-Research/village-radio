@@ -1,0 +1,25 @@
+{
+  "name": "village-radio",
+  "description": "A marketplace of community music tools. Release Radar for your people.",
+  "version": "0.1.0",
+  "plugins": [
+    {
+      "name": "village-radio",
+      "path": "village-radio",
+      "status": "building",
+      "description": "Community playlist automation — new releases, pinned tracks, sprinkled favorites"
+    },
+    {
+      "name": "newsletter",
+      "path": "newsletter",
+      "status": "planned",
+      "description": "Weekly digest from the same release data"
+    },
+    {
+      "name": "artist-ingest",
+      "path": "artist-ingest",
+      "status": "planned",
+      "description": "Batch-add artists from names, playlists, or festival lineups"
+    }
+  ]
+}

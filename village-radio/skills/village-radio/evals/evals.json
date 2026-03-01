@@ -1,0 +1,44 @@
+[
+  {
+    "name": "update-playlist",
+    "prompt": "update the village radio",
+    "expected_command": "village-radio:update",
+    "description": "User wants to push the weekly playlist update"
+  },
+  {
+    "name": "dry-run-preview",
+    "prompt": "show me this week's playlist",
+    "expected_command": "village-radio:dry-run",
+    "description": "User wants to see the playlist without pushing"
+  },
+  {
+    "name": "dry-run-variant",
+    "prompt": "what's new this week from my artists",
+    "expected_command": "village-radio:dry-run",
+    "description": "Variant phrasing for preview"
+  },
+  {
+    "name": "add-artist",
+    "prompt": "add Waxahatchee to the radio",
+    "expected_command": "village-radio:add-artist",
+    "description": "User wants to add an artist by name"
+  },
+  {
+    "name": "add-artist-variant",
+    "prompt": "can you put Bartees Strange on the playlist",
+    "expected_command": "village-radio:add-artist",
+    "description": "Variant phrasing for adding an artist"
+  },
+  {
+    "name": "setup-troubleshoot",
+    "prompt": "the radio isn't working",
+    "expected_command": "village-radio:setup",
+    "description": "User reports a problem — should route to setup/troubleshooting"
+  },
+  {
+    "name": "setup-first-run",
+    "prompt": "I want to set up village radio",
+    "expected_command": "village-radio:setup",
+    "description": "First-time setup request"
+  }
+]

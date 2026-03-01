@@ -1,0 +1,39 @@
+{
+  "name": "village-radio-trigger-eval",
+  "description": "Tests that the village-radio skill triggers correctly on natural language prompts",
+  "skill": "village-radio",
+  "cases": [
+    {
+      "input": "update the village radio",
+      "should_trigger": true
+    },
+    {
+      "input": "push this week's playlist",
+      "should_trigger": true
+    },
+    {
+      "input": "show me what the playlist looks like",
+      "should_trigger": true
+    },
+    {
+      "input": "add Illuminati Hotties to the radio",
+      "should_trigger": true
+    },
+    {
+      "input": "the radio isn't updating",
+      "should_trigger": true
+    },
+    {
+      "input": "what's the weather like",
+      "should_trigger": false
+    },
+    {
+      "input": "help me write a python script",
+      "should_trigger": false
+    },
+    {
+      "input": "new releases from my community",
+      "should_trigger": true
+    }
+  ]
+}

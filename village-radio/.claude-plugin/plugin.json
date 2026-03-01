@@ -1,0 +1,12 @@
+{
+  "name": "village-radio",
+  "description": "Community playlist automation — new releases from your artists, pinned tracks, sprinkled favorites. Release Radar for your people.",
+  "version": "0.1.0",
+  "status": "building",
+  "commands": [
+    "update",
+    "dry-run",
+    "setup",
+    "add-artist"
+  ]
+}

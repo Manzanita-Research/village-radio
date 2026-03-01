@@ -1,0 +1,6 @@
+{
+  "name": "artist-ingest",
+  "description": "Batch-resolve artist names into Spotify URIs from names, playlists, or festival lineups.",
+  "version": "0.1.0",
+  "status": "planned"
+}

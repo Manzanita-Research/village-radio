@@ -1,0 +1,30 @@
+# Village Radio — Dev Instructions
+
+## What this is
+
+A marketplace of Claude Code plugins for music communities. The first plugin (`village-radio`) automates community playlist curation on Spotify.
+
+## Repo structure
+
+- Top level: marketplace metadata, shared config
+- `village-radio/`: playlist automation plugin (Python + Spotipy)
+- `newsletter/`: planned — weekly digest plugin
+- `artist-ingest/`: planned — batch artist resolution plugin
+
+## Key principle: config lives with the user
+
+The repo ships no config, no secrets, no tokens. The user's radio config YAML lives at a path they choose. Spotify credentials come from env vars. OAuth tokens cache locally. The plugin is pure logic.
+
+## Python conventions
+
+- Python 3.10+
+- Dependencies: spotipy, pyyaml, ruamel.yaml
+- Use dataclasses for config models
+- Platform abstraction: `platforms/base.py` defines the interface, `platforms/spotify.py` implements it
+- Type hints on public functions
+
+## Testing
+
+- Unit tests for playlist_builder (dedup, truncation, sprinkle distribution)
+- Dry-run mode for integration testing against real Spotify API
+- Skill trigger evals via skill-creator

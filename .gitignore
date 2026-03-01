@@ -1,0 +1,21 @@
+# secrets and tokens
+.env
+*.token
+.cache-*
+.spotipy-cache*
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+
+# claude
+.claude/settings.local.json
+
+# os
+.DS_Store
+Thumbs.db
