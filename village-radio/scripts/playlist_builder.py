@@ -28,6 +28,11 @@ class PlaylistResult:
     total_count: int
 
 
+def _track_uri(track: Track, platform: str) -> str:
+    """Get the URI for a track on the active platform."""
+    return track.uri_for(platform)
+
+
 def build_playlist(
     config: RadioConfig,
     releases: list[Release],
@@ -43,11 +48,12 @@ def build_playlist(
     if seed is not None:
         random.seed(seed)
 
+    platform = config.platform
     max_tracks = config.settings.max_tracks
     favorites_count = min(config.settings.favorites_count, len(config.favorites))
 
     # 1. Pinned tracks — sacred, always at the top
-    pinned_uris = {t.spotify_uri for t in config.pinned}
+    pinned_uris = {_track_uri(t, platform) for t in config.pinned}
     pinned_tracks = list(config.pinned)
 
     # 2. Collect all tracks from new releases
@@ -57,13 +63,12 @@ def build_playlist(
             # 3. Deduplicate: skip if already pinned
             if track_data["uri"] in pinned_uris:
                 continue
-            release_tracks.append(
-                Track(
-                    name=track_data["name"],
-                    spotify_uri=track_data["uri"],
-                    artist=release.artist_name,
-                )
-            )
+            track_kwargs = {
+                "name": track_data["name"],
+                f"{platform}_uri": track_data["uri"],
+                "artist": release.artist_name,
+            }
+            release_tracks.append(Track(**track_kwargs))
 
     # 4. Sort by release date (releases are already per-artist, but we want
     # global newest-first). We use the release's date for all its tracks.
@@ -73,7 +78,7 @@ def build_playlist(
             release_date_map[track_data["uri"]] = release.release_date
 
     release_tracks.sort(
-        key=lambda t: release_date_map.get(t.spotify_uri, 0),
+        key=lambda t: release_date_map.get(_track_uri(t, platform), 0),
         reverse=True,
     )
 
@@ -81,13 +86,14 @@ def build_playlist(
     seen_uris = set(pinned_uris)
     deduped_releases = []
     for track in release_tracks:
-        if track.spotify_uri not in seen_uris:
-            seen_uris.add(track.spotify_uri)
+        uri = _track_uri(track, platform)
+        if uri not in seen_uris:
+            seen_uris.add(uri)
             deduped_releases.append(track)
 
     # 5. Sample favorites (excluding anything already in the list)
     available_favorites = [
-        f for f in config.favorites if f.spotify_uri not in seen_uris
+        f for f in config.favorites if _track_uri(f, platform) not in seen_uris
     ]
     favorites_drawn = random.sample(
         available_favorites,

@@ -2,8 +2,12 @@
 # Copy this file somewhere outside the repo and customize it.
 # e.g., ~/music/radio-config.yaml
 
+# Which platform to use: "spotify" or "tidal"
+# platform: spotify
+
 playlist:
   spotify_uri: "spotify:playlist:YOUR_PLAYLIST_ID"
+  # tidal_uri: "YOUR_TIDAL_PLAYLIST_UUID"
   name: "Village Radio"
 
 settings:
@@ -18,27 +22,34 @@ settings:
     - album
     - single
     - appears_on
-  # Delay between Spotify API calls (seconds) — be kind to the API
+  # Delay between API calls (seconds) — be kind to the API
   rate_limit_delay: 0.5
 
 # Artists in your community
 artists:
   - name: "Bartees Strange"
     spotify_uri: "spotify:artist:abc123"
+    # tidal_uri: "12345678"
+    # bandcamp_url: "https://barteesstrange.bandcamp.com"
   - name: "Squirrel Flower"
     spotify_uri: "spotify:artist:def456"
+    # tidal_uri: "87654321"
+    # bandcamp_url: "https://squirrelflower.bandcamp.com"
 
 # Tracks pinned to the top — these never get rotated out
 pinned:
   - name: "My Latest Single"
     spotify_uri: "spotify:track:xyz789"
+    # tidal_uri: "11111111"
     artist: "Your Name"
 
 # All-time favorites to sprinkle through the playlist
 favorites:
   - name: "Motion Sickness"
     spotify_uri: "spotify:track:aaa111"
+    # tidal_uri: "22222222"
     artist: "Phoebe Bridgers"
   - name: "Wetsuit"
     spotify_uri: "spotify:track:bbb222"
+    # tidal_uri: "33333333"
     artist: "The Vaccines"

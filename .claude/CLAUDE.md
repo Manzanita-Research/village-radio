@@ -15,6 +15,12 @@ A marketplace of Claude Code plugins for music communities. The first plugin (`v
 
 The repo ships no config, no secrets, no tokens. The user's radio config YAML lives at a path they choose. Spotify credentials come from env vars. OAuth tokens cache locally. The plugin is pure logic.
 
+## Tooling
+
+- Use `mise` for runtime management. The repo has `.mise.toml` at the root.
+- Always use `mise exec --` or `mise run` to run commands in the right environment.
+- Never install packages with bare `pip install` — use `mise exec -- pip install` or activate the venv first.
+
 ## Python conventions
 
 - Python 3.10+
