@@ -1,0 +1,8 @@
+checks:
+  test:
+    cmd: "mise exec -- python3 village-radio/scripts/test_playlist_builder.py"
+    label: "playlist builder tests"
+
+  lint:
+    cmd: "mise exec -- python3 -m py_compile village-radio/scripts/radio.py"
+    label: "syntax check"

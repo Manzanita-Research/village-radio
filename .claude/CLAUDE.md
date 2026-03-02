@@ -20,6 +20,11 @@ The repo ships no config, no secrets, no tokens. The user's radio config YAML li
 - Use `mise` for runtime management. The repo has `.mise.toml` at the root.
 - Always use `mise exec --` or `mise run` to run commands in the right environment.
 - Never install packages with bare `pip install` — use `mise exec -- pip install` or activate the venv first.
+- Use `hush` to run tests and checks. It saves context by showing `✓`/`✗` summaries instead of full output.
+  - `hush test` — run playlist builder tests
+  - `hush lint` — syntax check
+  - `hush all` — run everything
+  - Always prefer `hush` over raw test commands unless you need to see full output for debugging.
 
 ## Python conventions
 
@@ -31,6 +36,7 @@ The repo ships no config, no secrets, no tokens. The user's radio config YAML li
 
 ## Testing
 
+- Run tests with `hush test` (or `hush all` to include lint)
 - Unit tests for playlist_builder (dedup, truncation, sprinkle distribution)
-- Dry-run mode for integration testing against real Spotify API
+- Dry-run mode for integration testing against real Spotify/Tidal API
 - Skill trigger evals via skill-creator
